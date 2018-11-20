@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+
+{% block content %}
+
+    <div class="container">
+        <form action="" method="post">
+            {% csrf_token %}
+            {% bootstrap_form form %}   <!--auth.models.User, auth.models.PermissionsMixin에서 가져오는데, permissionsmixin은 특정 유저에게 특정 권한 부여-->  
+            <input type="submit">
+        </form>
+    </div>
+    
+{% endblock %}
