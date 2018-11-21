@@ -1,0 +1,16 @@
+{% extends 'posts/post_base.html' %}
+
+{% block post_content %}
+  <div class="jumbotron">
+   <h1 class="display-4">{{post.title}}</h1>
+   <p class="lead">{{post.message}}</p>
+   <hr class="my-4">
+   <p>{{post.user.username}} / {{post.created_at}}</p>
+   
+   <!--조건이 맞아야 수정과 삭제 버튼이 나타남-->
+    {% if user.is_authenticated and post.user == user %}  <!--로그인이 되었는가?--> <!--작성한 user == 로그인한 user?-->
+    <a class="btn btn-primary btn-lg" href="#" role="button">수정</a>
+    <a class="btn btn-danger btn-lg" href="{% url 'posts:delete' post.pk %}" role="button">삭제</a>
+    {% endif %}
+  </div>
+{% endblock %}

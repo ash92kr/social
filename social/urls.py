@@ -24,4 +24,5 @@ urlpatterns = [
     path('bye/', views.ByePage.as_view(), name='bye'),
     path('accounts/', include('django.contrib.auth.urls')),
     path('groups/', include('groups.urls')),
+    path('posts/', include('posts.urls')),
 ]

@@ -7,12 +7,12 @@
     
     {% if user in group.members.all %}
     <!--유저가 이 그룹에 속해있을 때-->
-        <a href="" class="btn btn-warning">
+        <a href={% url 'groups:leave' slug=group.slug %}" class="btn btn-warning">
             <i class="fas fa-trash-alt"></i>leave
         </a>
     {% else %}
     <!--유저가 이 그룹에 속해 있지 않을 때-->
-        <a href="" class='btn btn-warning'>
+        <a href="{% url 'groups:join' slug=group.slug %}" class='btn btn-warning'>
             <i class="far fa-check-circle"></i>Join
         </a>
     {% endif %}

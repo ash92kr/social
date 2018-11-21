@@ -1,0 +1,33 @@
+{% extends 'posts/post_base.html %}
+
+{% block prepost %}
+   <div class="col-md-4">
+        {% if user.is_authenticated %} <!--유저가 로그인해야 아래가 출력됨-->
+            <h2>
+                반갑습니다!
+                <a href="{% url 'posts:for_user' user.username %}">@{{user.username}}</a>
+            </h2>
+        {% endif %}  
+        <h2>Post</h2>
+        <p>여기는 Post페이지입니다</p>
+        
+        {% if user.is_authenticated %}
+            <a href="{% url 'posts:create' %}" class="btn btn-warning">  <!--redirect 기능-->
+            <i class="fab fa-twitter"></i>
+            create new Post!!
+            </a>    
+        {% endif %}
+        
+    </div>
+{% endblock %}
+</div>
+
+{% block post_content %}
+<div class="col-md-8">
+        <!--게시물 하나씩 출력-->
+        {% for post in post_list %}
+            {% include 'posts/_post.html' %}  <!--외부의 다른 콘텐츠를 내부로 가져온다-->
+        {% endfor %}  <!--for문을 돌리면서 _post.html의 내용을 반복해서 출력한다-->
+</div>              <!--include와 exclude의 차이를 비교할 것-->
+{% endblock %}
+
